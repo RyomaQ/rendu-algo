@@ -69,11 +69,20 @@ const nameStock = [
     'Pascal',
     'Carla',
     'Nina',
+    'Dylan',
+    'Claire',
+    'Isaac',
+    'Prisca',
+    'Oumar',
+    'Keith',
+    'Victor',
+    'Marie',
+    'Quentin'
 ]
 
 // Choisir leur nom
 function nameIndex() {
-    return Math.floor(Math.random() * 11)  
+    return Math.floor(Math.random() * nameStock.length)  
 }
 
 // Quel membre se fait attaquer
@@ -102,9 +111,9 @@ console.log('Nos 5 survivants ' + members[0].name + ', ' + members[1].name + ', 
 while(jasonHP > 0 && members.length > 0) {
     let action = Math.floor(Math.random() * 3);
     let memberIndex = Math.floor(Math.random() * members.length)
-    console.log('Jason attaque ' + members[memberIndex].name)
+    console.log('Jason attaque ' + members[memberIndex].name + ' le ' + members[memberIndex].job)
     if(action == 0) {
-        console.log(members[memberIndex].name + ' est mort.'),
+        console.log(members[memberIndex].name + ' le ' + members[memberIndex].job + ' est mort.'),
         members.splice(memberIndex, 1)
         if(members.length == 0){
             console.log('Tout les survivants sont morts, échec de la mission..')
@@ -112,17 +121,17 @@ while(jasonHP > 0 && members.length > 0) {
     } else if (action == 1) {
         jasonHP = jasonHP - 10;
         if(jasonHP < 0) {
-            console.log(members[memberIndex].name + ' a tué Jason, la mission est réussie !!')
+            console.log(members[memberIndex].name + ' le ' + members[memberIndex].job + ' a tué Jason, la mission est réussie !!')
         } else {
-            console.log(members[memberIndex].name + ' retire 10pv à Jason, il lui reste ' + jasonHP + 'pv. Il reste ' + members.length + ' survivants.')
+            console.log(members[memberIndex].name + ' le ' + members[memberIndex].job + ' retire 10pv à Jason, il lui reste ' + jasonHP + 'pv. Il reste ' + members.length + ' survivants.')
         }
     } else if (action == 2) {
         jasonHP = jasonHP - 15;
         if(jasonHP < 0) {
-            console.log(members[memberIndex].name + ' est mort mais tue Jason, la mission est réussie !!');
+            console.log(members[memberIndex].name + ' le ' + members[memberIndex].job + ' est mort mais tue Jason, la mission est réussie !!');
             break;
         } else {
-            console.log(members[memberIndex].name + ' est mort mais retire 15pv à Jason, il lui reste ' + jasonHP + 'pv. Il reste ' + (members.length-1) + ' survivants.')
+            console.log(members[memberIndex].name + ' le ' + members[memberIndex].job + ' est mort mais retire 15pv à Jason, il lui reste ' + jasonHP + 'pv. Il reste ' + (members.length-1) + ' survivants.')
             members.splice(memberIndex, 1);
             if(members.length == 0 && jasonHP == 0) {
                 console.log('C\'est un carnage, tout le monde meurt')
